@@ -1,0 +1,2095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CodeLess AI — Build Premium AI Websites Without Coding</title>
+<meta name="description" content="Learn how to build modern AI-powered websites, deploy them for free, find clients, and turn your skills into income — no coding, no laptop required.">
+<meta name="theme-color" content="#0F172A">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400,300&display=swap">
+
+<style>
+/* ============================================================
+   TOKENS
+============================================================ */
+:root{
+  --primary:#2563EB;
+  --primary-light:#3B82F6;
+  --glow:#60A5FA;
+  --accent:#38BDF8;
+  --bg-1:#F8FBFF;
+  --bg-2:#EEF5FF;
+  --bg-3:#FFFFFF;
+  --dark:#0F172A;
+  --dark-2:#111C33;
+  --text:#0F172A;
+  --text-secondary:#64748B;
+  --glass-border:rgba(59,130,246,.15);
+  --glass-bg:rgba(255,255,255,.55);
+  --shadow-soft:0 25px 60px rgba(37,99,235,.12);
+  --shadow-lift:0 30px 70px rgba(37,99,235,.22);
+  --ease:cubic-bezier(.16,1,.3,1);
+  --radius-lg:24px;
+  --radius-md:20px;
+  --radius-sm:14px;
+  --font-display:'Satoshi', 'Inter', sans-serif;
+  --font-body:'Inter', sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important;}
+}
+body{
+  font-family:var(--font-body);
+  color:var(--text);
+  background:var(--bg-3);
+  overflow-x:hidden;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+img, video{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+ul{list-style:none;}
+section{position:relative;}
+.container{
+  width:100%;
+  max-width:1240px;
+  margin:0 auto;
+  padding:0 20px;
+}
+@media(min-width:768px){.container{padding:0 40px;}}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--primary);
+  background:rgba(37,99,235,.07);
+  border:1px solid var(--glass-border);
+  padding:8px 16px;border-radius:100px;
+  backdrop-filter:blur(10px);
+}
+.eyebrow::before{
+  content:'';width:6px;height:6px;border-radius:50%;background:var(--glow);
+  box-shadow:0 0 10px 2px var(--glow);
+}
+
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;letter-spacing:-0.02em;color:var(--text);}
+.section-head{max-width:680px;margin:0 auto 56px;text-align:center;}
+.section-head h2{font-size:clamp(28px,4.5vw,44px);line-height:1.1;margin-top:16px;}
+.section-head p{color:var(--text-secondary);font-size:17px;margin-top:14px;}
+
+/* scroll reveal */
+[data-reveal]{opacity:0;transform:translateY(28px);filter:blur(4px);transition:opacity .8s var(--ease),transform .8s var(--ease),filter .8s var(--ease);will-change:transform,opacity,filter;}
+[data-reveal].in-view{opacity:1;transform:translateY(0);filter:blur(0);}
+[data-reveal="scale"]{transform:scale(.92);}
+[data-reveal="scale"].in-view{transform:scale(1);}
+[data-reveal-delay="1"]{transition-delay:.08s;}
+[data-reveal-delay="2"]{transition-delay:.16s;}
+[data-reveal-delay="3"]{transition-delay:.24s;}
+[data-reveal-delay="4"]{transition-delay:.32s;}
+[data-reveal-delay="5"]{transition-delay:.4s;}
+[data-reveal-delay="6"]{transition-delay:.48s;}
+
+/* ============================================================
+   GLASS CARD (Optimized for performance)
+============================================================ */
+.glass{
+  background:var(--glass-bg);
+  border:1px solid var(--glass-border);
+  border-radius:var(--radius-lg);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  box-shadow:var(--shadow-soft);
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .5s var(--ease);
+}
+.glass:hover{transform:translateY(-6px);box-shadow:var(--shadow-lift);border-color:rgba(59,130,246,.35);}
+
+/* ============================================================
+   BUTTONS
+============================================================ */
+.btn{
+  position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:16px 30px;border-radius:100px;font-weight:600;font-size:15px;
+  overflow:hidden;isolation:isolate;transition:transform .35s var(--ease),box-shadow .35s var(--ease);
+  will-change:transform;
+}
+.btn-primary{
+  color:#fff;background:linear-gradient(135deg,var(--primary),var(--primary-light) 55%,var(--accent));
+  box-shadow:0 10px 30px rgba(37,99,235,.35);
+}
+.btn-primary:hover{box-shadow:0 16px 46px rgba(37,99,235,.5);}
+.btn-primary::after{
+  content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.45),transparent);
+  transform:translateX(-120%);
+}
+.btn-primary:hover::after{transform:translateX(120%);transition:transform .9s var(--ease);}
+.btn-ghost{
+  color:var(--text);background:rgba(255,255,255,.6);
+  border:1px solid var(--glass-border);backdrop-filter:blur(14px);
+}
+.btn-ghost:hover{border-color:rgba(59,130,246,.4);transform:translateY(-2px);}
+.btn-arrow{transition:transform .4s var(--ease);}
+.btn:hover .btn-arrow{transform:translateX(4px);}
+.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.5);transform:scale(0);animation:ripple .7s ease-out;pointer-events:none;}
+@keyframes ripple{to{transform:scale(3);opacity:0;}}
+
+/* ============================================================
+   NAV
+============================================================ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  padding:16px 20px;transition:background .4s var(--ease),box-shadow .4s var(--ease),padding .4s var(--ease);
+}
+.nav-inner{
+  max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;
+  padding:10px 18px;border-radius:100px;
+  background:rgba(255,255,255,.7);backdrop-filter:blur(12px);
+  border:1px solid var(--glass-border);box-shadow:0 10px 40px rgba(37,99,235,.1);
+}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:16px;flex-shrink:0;}
+.logo img{
+  width:28px;height:28px;object-fit:cover;border-radius:6px;
+}
+.nav-links{display:none;gap:24px;font-size:14px;font-weight:500;color:var(--text-secondary);}
+.nav-links a{transition:color .25s;}
+.nav-links a:hover{color:var(--primary);}
+@media(min-width:900px){.nav-links{display:flex;margin-left:auto;margin-right:32px;}}
+.nav-cta{display:inline-flex;padding:10px 20px;font-size:13px;flex-shrink:0;}
+
+/* ============================================================
+   HERO & PRICING
+============================================================ */
+.hero{
+  position:relative;padding:150px 0 100px;overflow:hidden;
+  background:radial-gradient(120% 90% at 50% -10%,var(--bg-2) 0%,var(--bg-1) 45%,#fff 100%);
+}
+.hero-bg-orb{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;will-change:transform;}
+.orb-1{width:520px;height:520px;top:-160px;left:-160px;background:radial-gradient(circle,rgba(96,165,250,.45),transparent 70%);animation:float-slow 14s ease-in-out infinite;}
+.orb-2{width:460px;height:460px;top:100px;right:-180px;background:radial-gradient(circle,rgba(56,189,248,.35),transparent 70%);animation:float-slow 18s ease-in-out infinite reverse;}
+.orb-3{width:360px;height:360px;bottom:-140px;left:35%;background:radial-gradient(circle,rgba(37,99,235,.28),transparent 70%);animation:float-slow 20s ease-in-out infinite;}
+@keyframes float-slow{
+  0%,100%{transform:translate(0,0) scale(1);}
+  50%{transform:translate(30px,-25px) scale(1.08);}
+}
+.mesh-grid{
+  position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(rgba(37,99,235,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,.05) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(70% 60% at 50% 20%,#000 30%,transparent 90%);
+}
+.particle{position:absolute;border-radius:50%;background:var(--glow);opacity:.5;pointer-events:none;box-shadow:0 0 12px 2px var(--glow);animation:particle-drift linear infinite;will-change:transform,opacity;}
+@keyframes particle-drift{
+  0%{transform:translateY(0) translateX(0);opacity:0;}
+  10%{opacity:.6;}
+  90%{opacity:.4;}
+  100%{transform:translateY(-140px) translateX(20px);opacity:0;}
+}
+.hero-content{position:relative;z-index:2;display:grid;gap:52px;align-items:center;}
+@media(min-width:1024px){.hero-content{grid-template-columns:1.02fr .98fr;gap:40px;}}
+.hero-text h1{
+  font-size:clamp(34px,5.6vw,58px);line-height:1.06;margin-top:20px;
+}
+.hero-text .line-2{
+  display:block;background:linear-gradient(100deg,var(--primary),var(--accent) 60%,var(--primary-light));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero-text p.desc{margin-top:22px;font-size:17px;color:var(--text-secondary);max-width:520px;line-height:1.65;}
+
+/* PRICING BADGE */
+.pricing-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  margin-top:24px;
+  padding:10px 18px;
+  background:rgba(37,99,235,.06);
+  border:1px solid rgba(37,99,235,.2);
+  border-radius:100px;
+}
+.pricing-badge .old-price{
+  text-decoration:line-through;
+  color:var(--text-secondary);
+  font-size:15px;
+  font-weight:500;
+}
+.pricing-badge .current-price{
+  font-size:24px;
+  font-weight:800;
+  color:var(--primary);
+  font-family:var(--font-display);
+}
+.pricing-badge .discount-tag{
+  background:linear-gradient(135deg,#EF4444,#DC2626);
+  color:#fff;
+  font-size:11px;
+  font-weight:700;
+  padding:4px 10px;
+  border-radius:100px;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  box-shadow:0 4px 12px rgba(239,68,68,.3);
+}
+
+.hero-cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:24px;}
+
+/* COUNTDOWN BADGE */
+.timer-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 22px;
+  border-radius:100px;
+  background:rgba(239,68,68,.08);
+  border:1px solid rgba(239,68,68,.25);
+  color:#DC2626;
+  font-weight:700;
+  font-size:14px;
+  backdrop-filter:blur(14px);
+}
+.timer-badge-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#EF4444;
+  box-shadow:0 0 10px 2px #EF4444;
+  animation:timer-pulse 1.5s ease-in-out infinite;
+}
+@keyframes timer-pulse{
+  0%,100%{opacity:1;transform:scale(1);}
+  50%{opacity:0.3;transform:scale(0.85);}
+}
+.timer-digits{
+  font-family:var(--font-display);
+  letter-spacing:0.02em;
+}
+
+.trust-row{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:34px;}
+.trust-item{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:500;color:var(--text-secondary);}
+.trust-item svg{width:16px;height:16px;color:var(--primary);flex-shrink:0;}
+
+.hero-visual{position:relative;perspective:1200px;}
+.hero-visual-inner{
+  position:relative;transform-style:preserve-3d;
+  animation:hero-float 7s ease-in-out infinite;
+  will-change:transform;
+}
+@keyframes hero-float{
+  0%,100%{transform:translateY(0) rotate(-1.2deg) scale(1);}
+  50%{transform:translateY(-16px) rotate(1deg) scale(1.015);}
+}
+.hero-glow-ring{
+  position:absolute;inset:-8%;border-radius:32px;
+  background:radial-gradient(circle at 50% 40%,rgba(96,165,250,.55),transparent 65%);
+  filter:blur(40px);animation:glow-pulse 4.5s ease-in-out infinite;z-index:0;
+}
+@keyframes glow-pulse{0%,100%{opacity:.55;}50%{opacity:.95;}}
+.hero-frame{
+  position:relative;z-index:2;border-radius:22px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.6);
+  box-shadow:0 40px 90px rgba(37,99,235,.28),0 0 0 1px rgba(59,130,246,.08);
+}
+.hero-frame img{width:100%;height:auto;display:block;}
+
+/* ============================================================
+   SMART SWIPE SLIDER
+============================================================ */
+.showcase{padding:100px 0;background:#fff;}
+.marquee-wrap{
+  position:relative;
+  overflow:hidden;
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+}
+.marquee-track-native{
+  display:flex;
+  gap:26px;
+  width:100%;
+  overflow-x:auto;
+  scroll-behavior:auto;
+  -webkit-overflow-scrolling:touch;
+  padding:20px 40px 40px; 
+  scrollbar-width:none; 
+}
+.marquee-track-native::-webkit-scrollbar{
+  display:none; 
+}
+
+.showcase-card{
+  position:relative;
+  flex:0 0 auto;
+  width:300px;
+  border-radius:20px;
+  overflow:hidden;
+  background:rgba(255,255,255,.7);
+  border:1px solid var(--glass-border);
+  box-shadow:0 20px 50px rgba(37,99,235,.14);
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease);
+  animation:card-bob 6s ease-in-out infinite;
+  will-change: transform;
+}
+.showcase-card:nth-child(even){animation-delay:1.4s;}
+.showcase-card:nth-child(3n){animation-delay:2.6s;}
+@keyframes card-bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+
+.showcase-card:hover{
+  transform:translateY(-14px) scale(1.03);
+  box-shadow:0 30px 70px rgba(37,99,235,.26);
+}
+
+.showcase-img-wrap{
+  position:relative;
+  overflow:hidden;
+  border-radius:20px 20px 0 0;
+  aspect-ratio:16/10.4;
+  background:#000; 
+}
+.showcase-img-wrap video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:top;
+  transition:transform .6s var(--ease);
+}
+.showcase-card:hover .showcase-img-wrap video{
+  transform:scale(1.06);
+}
+.showcase-reflection{
+  position:absolute;bottom:0;left:0;right:0;height:40%;
+  background:linear-gradient(to top,rgba(37,99,235,.1),transparent);
+  pointer-events:none;
+}
+.showcase-label{
+  padding:14px 16px;
+  font-size:13px;
+  font-weight:600;
+  color:var(--text-secondary);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.showcase-label .chip-dot{
+  background:var(--accent);
+}
+
+/* ============================================================
+   WHY SECTION
+============================================================ */
+.why{padding:100px 0;background:linear-gradient(180deg,#fff,var(--bg-1));}
+.why-grid{display:grid;gap:18px;grid-template-columns:repeat(2,1fr);}
+@media(min-width:700px){.why-grid{grid-template-columns:repeat(3,1fr);}}
+.why-card{padding:30px 24px;text-align:left;}
+.why-icon{
+  width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;
+  background:linear-gradient(135deg,rgba(37,99,235,.12),rgba(56,189,248,.12));
+  color:var(--primary);
+}
+.why-icon svg{width:22px;height:22px;}
+.why-card h3{font-size:16.5px;font-weight:600;font-family:var(--font-body);}
+.why-card p{font-size:13.5px;color:var(--text-secondary);margin-top:6px;}
+
+/* ============================================================
+   FEATURED OFFER CARD (PRE-CURRICULUM)
+============================================================ */
+.pre-curriculum-offer{
+  padding:60px 0 20px;
+  background:linear-gradient(180deg, var(--bg-1), #fff);
+}
+.offer-box{
+  position:relative;
+  max-width:580px;
+  margin:0 auto;
+  padding:44px 32px 36px;
+  background:#FFFFFF;
+  border:2px solid var(--primary-light);
+  border-radius:28px;
+  box-shadow:0 30px 70px rgba(37, 99, 235, 0.12);
+  text-align:center;
+}
+.offer-box-badge{
+  position:absolute;
+  top:-16px;
+  left:50%;
+  transform:translateX(-50%);
+  background:linear-gradient(135deg, var(--primary), var(--primary-light));
+  color:#FFF;
+  font-size:11.5px;
+  font-weight:800;
+  letter-spacing:0.12em;
+  padding:8px 20px;
+  border-radius:100px;
+  text-transform:uppercase;
+  box-shadow:0 8px 20px rgba(37, 99, 235, 0.35);
+  white-space:nowrap;
+}
+.offer-price-row{
+  display:flex;
+  align-items:baseline;
+  justify-content:center;
+  gap:10px;
+  margin-top:8px;
+}
+.offer-symbol{
+  font-size:28px;
+  font-weight:700;
+  color:var(--text);
+}
+.offer-price-big{
+  font-family:var(--font-display);
+  font-size:clamp(52px, 8vw, 68px);
+  font-weight:800;
+  color:var(--primary);
+  line-height:1;
+}
+.offer-price-old{
+  font-size:22px;
+  color:var(--text-secondary);
+  text-decoration:line-through;
+  font-weight:500;
+}
+.offer-save-pill{
+  display:inline-block;
+  margin-top:14px;
+  padding:6px 18px;
+  background:rgba(239, 68, 68, 0.08);
+  color:#DC2626;
+  font-size:13.5px;
+  font-weight:700;
+  border-radius:100px;
+}
+.offer-list{
+  margin:32px 0 36px;
+  text-align:left;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.offer-item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:15px;
+  font-weight:600;
+  color:var(--text);
+}
+.offer-item svg{
+  width:20px;
+  height:20px;
+  color:var(--primary);
+  flex-shrink:0;
+}
+.offer-btn{
+  width:100%;
+  padding:18px 24px;
+  font-size:16px;
+  font-weight:700;
+  border-radius:100px;
+  background:linear-gradient(135deg, var(--primary), var(--accent));
+  color:#FFF;
+  box-shadow:0 12px 32px rgba(37, 99, 235, 0.35);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  transition:transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.offer-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 18px 44px rgba(37, 99, 235, 0.45);
+}
+
+/* ============================================================
+   CURRICULUM
+============================================================ */
+.curriculum{padding:80px 0 100px;background:#fff;}
+.module-list{display:grid;gap:20px;}
+.module{
+  padding:32px;display:grid;gap:22px;
+}
+@media(min-width:860px){.module{grid-template-columns:260px 1fr;align-items:start;}}
+.module-num{
+  font-family:var(--font-display);font-size:42px;font-weight:700;
+  background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;
+  line-height:1;
+}
+.module-title{font-size:20px;margin-top:10px;font-family:var(--font-display);}
+.module-sub{color:var(--text-secondary);font-size:13.5px;margin-top:6px;}
+.module-items{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));}
+.module-item{
+  display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;
+  padding:12px 14px;border-radius:12px;background:rgba(37,99,235,.04);border:1px solid transparent;
+  transition:border-color .3s,background .3s;
+}
+.module-item:hover{border-color:var(--glass-border);background:rgba(37,99,235,.08);}
+.module-item svg{width:15px;height:15px;color:var(--primary);flex-shrink:0;}
+
+/* ============================================================
+   SELLING SYSTEM TIMELINE
+============================================================ */
+.system{padding:110px 0;background:var(--dark);color:#fff;position:relative;overflow:hidden;}
+.system::before{
+  content:'';position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:800px;height:800px;
+  background:radial-gradient(circle,rgba(37,99,235,.35),transparent 65%);filter:blur(10px);pointer-events:none;
+}
+.system .section-head h2, .system .section-head p{color:#fff;}
+.system .section-head p{color:rgba(255,255,255,.6);}
+.timeline{position:relative;max-width:560px;margin:0 auto;padding-left:6px;}
+.timeline-line{
+  position:absolute;left:29px;top:14px;bottom:14px;width:2px;
+  background:linear-gradient(to bottom,rgba(59,130,246,0),rgba(59,130,246,.7) 10%,rgba(56,189,248,.7) 90%,rgba(56,189,248,0));
+}
+.timeline-progress{
+  position:absolute;left:29px;top:14px;width:2px;background:linear-gradient(to bottom,var(--accent),var(--glow));
+  height:0%;transition:height 1.2s var(--ease);box-shadow:0 0 12px 2px rgba(96,165,250,.6);
+}
+.tl-step{position:relative;display:flex;gap:22px;padding:22px 0;}
+.tl-dot{
+  flex-shrink:0;width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.06);border:1px solid rgba(59,130,246,.3);font-family:var(--font-display);font-weight:700;font-size:18px;
+  z-index:1;transition:background .5s,border-color .5s,box-shadow .5s;
+}
+.tl-step.in-view .tl-dot{background:linear-gradient(135deg,var(--primary),var(--accent));border-color:transparent;box-shadow:0 0 26px rgba(59,130,246,.55);}
+.tl-body h3{font-family:var(--font-body);font-size:17px;font-weight:600;color:#ffffff;}
+.tl-body p{font-size:13.5px;color:rgba(255,255,255,.75);margin-top:4px;max-width:360px;}
+
+/* ============================================================
+   SOCIAL PROOF
+============================================================ */
+.proof{padding:100px 0;background:linear-gradient(180deg,var(--bg-1),#fff);}
+.proof-track{display:flex;gap:22px;width:max-content;animation:marquee 34s linear infinite;will-change:transform;}
+.proof-track.rtl{animation-direction:reverse;}
+.proof-wrap:hover .proof-track{animation-play-state:paused;}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.proof-card{
+  flex:0 0 auto;width:230px;border-radius:20px;overflow:hidden;background:#fff;
+  border:1px solid var(--glass-border);box-shadow:0 18px 40px rgba(37,99,235,.12);
+}
+.proof-card img{width:100%;height:290px;object-fit:cover;}
+
+/* ============================================================
+   BONUSES
+============================================================ */
+.bonuses{padding:100px 0;background:#fff;}
+.bonus-grid{
+  display:grid;
+  gap:18px;
+  grid-template-columns:repeat(2, 1fr);
+}
+@media(min-width:768px){
+  .bonus-grid{
+    grid-template-columns:repeat(4, 1fr);
+  }
+  .bonus-card.centered-item{
+    grid-column: 2 / span 2;
+  }
+}
+@media(max-width:767px){
+  .bonus-grid{
+    grid-template-columns:1fr;
+  }
+}
+.bonus-card{padding:28px 22px;text-align:left;position:relative;overflow:hidden;}
+.bonus-card::before{
+  content:'';position:absolute;top:-40%;right:-40%;width:120px;height:120px;border-radius:50%;
+  background:radial-gradient(circle,rgba(56,189,248,.2),transparent 70%);
+}
+.bonus-tag{font-size:10.5px;font-weight:700;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;}
+.bonus-card h3{font-size:16px;margin-top:8px;font-family:var(--font-body);font-weight:600;}
+.bonus-card p{font-size:13px;color:var(--text-secondary);margin-top:6px;}
+
+/* ============================================================
+   FAQ
+============================================================ */
+.faq{padding:100px 0;background:linear-gradient(180deg,#fff,var(--bg-1));}
+.faq-list{max-width:760px;margin:0 auto;display:grid;gap:14px;}
+.faq-item{border-radius:18px;overflow:hidden;}
+.faq-q{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:22px 24px;font-family:var(--font-display);font-weight:500;font-size:15.5px;text-align:left;
+}
+.faq-plus{
+  flex-shrink:0;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:rgba(37,99,235,.08);position:relative;transition:transform .4s var(--ease),background .4s;
+}
+.faq-plus::before,.faq-plus::after{content:'';position:absolute;background:var(--primary);border-radius:2px;}
+.faq-plus::before{width:12px;height:2px;}
+.faq-plus::after{width:2px;height:12px;transition:transform .35s var(--ease);}
+.faq-item.open .faq-plus::after{transform:rotate(90deg);opacity:0;}
+.faq-item.open .faq-plus{background:var(--primary);}
+.faq-item.open .faq-plus::before{background:#fff;}
+.faq-a-wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease);}
+.faq-item.open .faq-a-wrap{grid-template-rows:1fr;}
+.faq-a-inner{overflow:hidden;}
+.faq-a{padding:0 24px 22px;font-size:14.5px;color:var(--text-secondary);line-height:1.7;max-width:640px;}
+
+/* ============================================================
+   FINAL CTA
+============================================================ */
+.final-cta{
+  padding:120px 0;background:var(--dark);color:#fff;text-align:center;position:relative;overflow:hidden;
+}
+.final-cta .glow-a,.final-cta .glow-b{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;will-change:transform;}
+.glow-a{width:560px;height:560px;top:-200px;left:-140px;background:radial-gradient(circle,rgba(37,99,235,.4),transparent 70%);animation:float-slow 16s ease-in-out infinite;}
+.glow-b{width:460px;height:460px;bottom:-180px;right:-120px;background:radial-gradient(circle,rgba(56,189,248,.3),transparent 70%);animation:float-slow 20s ease-in-out infinite reverse;}
+.final-cta h2{font-size:clamp(30px,5.4vw,52px);line-height:1.12;position:relative;z-index:2;color:#ffffff;}
+.final-cta h2 .accent-line{display:block;background:linear-gradient(100deg,var(--primary-light),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;margin-top:6px;}
+.final-cta p{position:relative;z-index:2;color:rgba(255,255,255,.6);margin-top:20px;font-size:16px;max-width:480px;margin-left:auto;margin-right:auto;}
+
+.final-pricing-card{
+  position:relative;
+  z-index:2;
+  display:inline-flex;
+  align-items:center;
+  gap:16px;
+  margin-top:28px;
+  padding:14px 26px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:100px;
+  backdrop-filter:blur(12px);
+}
+.final-pricing-card .old{
+  text-decoration:line-through;
+  color:rgba(255,255,255,.5);
+  font-size:18px;
+}
+.final-pricing-card .new{
+  font-size:30px;
+  font-weight:800;
+  color:#38BDF8;
+  font-family:var(--font-display);
+}
+.final-pricing-card .badge{
+  background:#10B981;
+  color:#fff;
+  font-size:12px;
+  font-weight:700;
+  padding:4px 10px;
+  border-radius:100px;
+}
+
+.final-cta .btn{margin-top:28px;position:relative;z-index:2;padding:19px 40px;font-size:16px;}
+
+/* ============================================================
+   SALES POP-UP ANIMATION (BOTTOM-LEFT)
+============================================================ */
+.sales-popup{
+  position:fixed;
+  bottom:24px;
+  left:24px;
+  z-index:350;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:12px 18px;
+  max-width:320px;
+  background:rgba(255, 255, 255, 0.92);
+  border:1px solid var(--glass-border);
+  border-radius:18px;
+  box-shadow:0 20px 40px rgba(15, 23, 42, 0.18);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  opacity:0;
+  transform:translateY(40px) scale(0.95);
+  transition:transform 0.6s var(--ease), opacity 0.6s var(--ease);
+  pointer-events:none;
+}
+.sales-popup.show{
+  opacity:1;
+  transform:translateY(0) scale(1);
+  pointer-events:auto;
+}
+.sales-popup.suppress{
+  opacity:0 !important;
+  transform:translateY(40px) scale(0.95) !important;
+  pointer-events:none !important;
+}
+.sales-popup-avatar{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:linear-gradient(135deg, var(--primary), var(--accent));
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  font-size:15px;
+  flex-shrink:0;
+  box-shadow:0 6px 16px rgba(37,99,235,.3);
+}
+.sales-popup-content{
+  display:flex;
+  flex-direction:column;
+  text-align:left;
+  overflow:hidden;
+}
+.sales-popup-title{
+  font-size:13px;
+  font-weight:700;
+  color:var(--text);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.sales-popup-desc{
+  font-size:11.5px;
+  color:var(--text-secondary);
+  margin-top:1px;
+}
+.sales-popup-time{
+  font-size:10.5px;
+  font-weight:600;
+  color:var(--primary);
+  margin-top:2px;
+}
+@media(max-width:640px){
+  .sales-popup{
+    bottom:16px;
+    left:16px;
+    max-width:calc(100vw - 32px - 70px);
+    padding:10px 14px;
+  }
+}
+
+/* ============================================================
+   WHATSAPP FLOAT
+============================================================ */
+.wa-float{
+  position:fixed;bottom:24px;right:24px;z-index:300;
+  width:60px;height:60px;border-radius:50%;
+  background:linear-gradient(135deg,#25D366,#1DA851);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 14px 34px rgba(37,211,102,.45);
+  animation:wa-pulse 2.6s ease-in-out infinite;
+}
+.wa-float svg{width:28px;height:28px;color:#fff;}
+@keyframes wa-pulse{
+  0%,100%{box-shadow:0 14px 34px rgba(37,211,102,.45);}
+  50%{box-shadow:0 14px 34px rgba(37,211,102,.75),0 0 0 10px rgba(37,211,102,.12);}
+}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+.footer{background:var(--dark);color:rgba(255,255,255,.55);padding:50px 0 105px;border-top:1px solid rgba(255,255,255,.06);}
+.footer-inner{display:flex;flex-direction:column;gap:26px;align-items:center;text-align:center;}
+@media(min-width:700px){
+  .footer{padding:50px 0 95px;}
+  .footer-inner{flex-direction:row;justify-content:space-between;text-align:left;}
+}
+.footer-links{display:flex;gap:22px;flex-wrap:wrap;justify-content:center;font-size:13.5px;font-weight:500;}
+.footer-links a{transition:color .25s;cursor:pointer;padding:4px 8px;border-radius:8px;}
+.footer-links a:hover{color:#fff;background:rgba(255,255,255,.06);}
+.footer-logo{display:flex;align-items:center;gap:10px;color:#fff;font-family:var(--font-display);font-weight:700;}
+.footer-logo img{width:24px; height:24px; object-fit:cover; border-radius:4px;}
+.footer-copy{font-size:12.5px;color:rgba(255,255,255,.35);}
+
+/* ============================================================
+   SEPARATE POLICY PAGE OVERLAY
+============================================================ */
+.policy-page-overlay{
+  position:fixed;
+  inset:0;
+  z-index:1200;
+  background:var(--bg-1);
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  display:none;
+  opacity:0;
+  transition:opacity 0.3s var(--ease);
+}
+.policy-page-overlay.active{
+  display:block;
+  opacity:1;
+}
+.policy-topbar{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:rgba(255,255,255,0.88);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--glass-border);
+  padding:14px 20px;
+}
+.policy-topbar-inner{
+  max-width:900px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+.policy-back-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:9px 18px;
+  border-radius:100px;
+  background:rgba(37,99,235,0.08);
+  border:1px solid rgba(37,99,235,0.2);
+  color:var(--primary);
+  font-size:13.5px;
+  font-weight:600;
+  transition:all 0.25s var(--ease);
+}
+.policy-back-btn:hover{
+  background:var(--primary);
+  color:#fff;
+}
+.policy-tabs{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  max-width:900px;
+  margin:22px auto 0;
+  padding:0 20px;
+  scrollbar-width:none;
+}
+.policy-tabs::-webkit-scrollbar{display:none;}
+.policy-tab-btn{
+  padding:9px 18px;
+  border-radius:100px;
+  font-size:13px;
+  font-weight:600;
+  white-space:nowrap;
+  background:#fff;
+  color:var(--text-secondary);
+  border:1px solid var(--glass-border);
+  transition:all 0.25s;
+}
+.policy-tab-btn.active{
+  background:var(--primary);
+  color:#fff;
+  border-color:var(--primary);
+  box-shadow:0 8px 20px rgba(37,99,235,0.25);
+}
+.policy-container{
+  max-width:900px;
+  margin:24px auto 80px;
+  padding:0 20px;
+}
+.policy-view{
+  display:none;
+  background:#fff;
+  border:1px solid var(--glass-border);
+  border-radius:var(--radius-lg);
+  padding:36px 26px;
+  box-shadow:var(--shadow-soft);
+}
+@media(min-width:768px){
+  .policy-view{padding:48px 44px;}
+}
+.policy-view.active{
+  display:block;
+  animation:policyFadeIn 0.35s var(--ease);
+}
+@keyframes policyFadeIn{
+  from{opacity:0;transform:translateY(14px);}
+  to{opacity:1;transform:translateY(0);}
+}
+.policy-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:11.5px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  padding:6px 14px;
+  border-radius:100px;
+  background:rgba(37,99,235,0.08);
+  color:var(--primary);
+  margin-bottom:14px;
+}
+.policy-view h1{
+  font-size:clamp(26px,4vw,36px);
+  line-height:1.15;
+  color:var(--text);
+}
+.policy-updated{
+  font-size:13px;
+  color:var(--text-secondary);
+  margin-top:8px;
+  padding-bottom:24px;
+  border-bottom:1px solid rgba(15,23,42,0.08);
+}
+.strict-refund-banner{
+  margin:24px 0;
+  padding:22px 24px;
+  border-radius:18px;
+  background:linear-gradient(135deg,rgba(239,68,68,0.08),rgba(220,38,38,0.04));
+  border:1.5px solid rgba(239,68,68,0.35);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.strict-refund-title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#DC2626;
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:17px;
+}
+.strict-refund-title svg{
+  width:22px;
+  height:22px;
+  flex-shrink:0;
+}
+.strict-refund-banner p{
+  font-size:14px;
+  color:#7F1D1D;
+  line-height:1.6;
+  font-weight:500;
+}
+.policy-section{
+  margin-top:26px;
+}
+.policy-section h3{
+  font-size:17.5px;
+  color:var(--text);
+  margin-bottom:10px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.policy-section p{
+  font-size:14.5px;
+  color:var(--text-secondary);
+  line-height:1.75;
+  margin-bottom:12px;
+}
+.policy-list{
+  margin:12px 0 16px;
+  display:grid;
+  gap:10px;
+}
+.policy-list li{
+  position:relative;
+  padding-left:24px;
+  font-size:14.5px;
+  color:var(--text-secondary);
+  line-height:1.65;
+}
+.policy-list li::before{
+  content:'';
+  position:absolute;
+  left:4px;
+  top:9px;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--primary);
+}
+.policy-list li strong{
+  color:var(--text);
+}
+.policy-wa-card{
+  margin-top:34px;
+  padding:28px 24px;
+  border-radius:20px;
+  background:linear-gradient(135deg,#0F172A,#1E293B);
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  align-items:flex-start;
+}
+@media(min-width:640px){
+  .policy-wa-card{
+    flex-direction:row;
+    align-items:center;
+    justify-content:space-between;
+    padding:30px 32px;
+  }
+}
+.policy-wa-card h4{
+  color:#fff;
+  font-size:19px;
+  margin-bottom:6px;
+}
+.policy-wa-card p{
+  color:rgba(255,255,255,0.75);
+  font-size:14px;
+  line-height:1.6;
+  max-width:480px;
+}
+.policy-wa-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 24px;
+  border-radius:100px;
+  background:linear-gradient(135deg,#25D366,#1DA851);
+  color:#fff;
+  font-weight:700;
+  font-size:14px;
+  box-shadow:0 10px 26px rgba(37,211,102,0.35);
+  flex-shrink:0;
+  transition:transform 0.25s var(--ease),box-shadow 0.25s var(--ease);
+}
+.policy-wa-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 32px rgba(37,211,102,0.5);
+}
+.policy-wa-btn svg{
+  width:20px;
+  height:20px;
+}
+
+/* focus visibility */
+a:focus-visible,button:focus-visible{outline:2px solid var(--primary);outline-offset:3px;border-radius:8px;}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo"><img src="https://i.ibb.co/LXF1GLPQ/Picsart-26-06-30-00-57-46-824.jpg" alt="CodeLess AI Logo">CodeLess AI</a>
+    <div class="nav-links">
+      <a href="#showcase">Websites</a>
+      <a href="#curriculum">Curriculum</a>
+      <a href="#system">How It Works</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="https://rzp.io/rzp/codelessai" class="btn btn-primary nav-cta magnetic">Enroll Now</a>
+  </div>
+</nav>
+
+<header class="hero" id="hero">
+  <div class="hero-bg-orb orb-1"></div>
+  <div class="hero-bg-orb orb-2"></div>
+  <div class="hero-bg-orb orb-3"></div>
+  <div class="mesh-grid"></div>
+  <div id="particles"></div>
+
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <span class="eyebrow" data-reveal>No Code · Mobile Only · AI Powered</span>
+        <h1 data-reveal data-reveal-delay="1">
+          Build Premium AI Websites Without Coding.
+          <span class="line-2">Turn Your Skills Into Income.</span>
+        </h1>
+        <p class="desc" data-reveal data-reveal-delay="2">
+          Learn how to build modern websites using AI, deploy them for free, find clients, and start selling your website services — all without coding or a laptop.
+        </p>
+
+        <div class="pricing-badge" data-reveal data-reveal-delay="2">
+          <span class="old-price">₹2,999</span>
+          <span class="current-price">₹887</span>
+          <span class="discount-tag">70% OFF</span>
+        </div>
+
+        <div class="hero-cta-row" data-reveal data-reveal-delay="3">
+          <a href="https://rzp.io/rzp/codelessai" class="btn btn-primary magnetic">
+            Start Learning Today
+            <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          
+          <div class="timer-badge">
+            <span class="timer-badge-dot"></span>
+            <span>Offer Ends In: <span class="timer-digits" id="heroTimer">02h 23m 00s</span></span>
+          </div>
+        </div>
+
+        <div class="trust-row" data-reveal data-reveal-delay="4">
+          <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>No Coding</div>
+          <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>No Laptop</div>
+          <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Mobile Friendly</div>
+          <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Free AI Tools</div>
+        </div>
+      </div>
+
+      <div class="hero-visual" data-reveal="scale" data-reveal-delay="2">
+        <div class="hero-visual-inner" id="heroParallax">
+          <div class="hero-glow-ring"></div>
+          <div class="hero-frame">
+            <img src="https://i.ibb.co/ZzyDGwRb/file-00000000a70c71fabae1d40976466e60.png" alt="Preview of a premium AI-built website created with CodeLess AI" loading="eager" width="640" height="640">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="showcase" id="showcase">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Real Output</span>
+      <h2>Websites You'll Learn To Build</h2>
+      <p>Swipe left or right. Every design below was built using the exact AI workflow taught inside CodeLess AI.</p>
+    </div>
+  </div>
+  
+  <div class="marquee-wrap" id="showcaseWrap" data-reveal>
+    <div class="marquee-track-native" id="showcaseTrack">
+      </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Zero Barriers</span>
+      <h2>Why CodeLess AI</h2>
+      <p>Everything is designed so the only two things you need are a phone and a willingness to learn.</p>
+    </div>
+    <div class="why-grid">
+      <div class="glass why-card" data-reveal>
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
+        <h3>No Coding</h3>
+        <p>Zero lines of code. AI handles the build, you handle direction.</p>
+      </div>
+      <div class="glass why-card" data-reveal data-reveal-delay="1">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v4M12 17v4M5 5l3 3M16 16l3 3M3 12h4M17 12h4M5 19l3-3M16 8l3-3"/></svg></div>
+        <h3>No Coding Knowledge</h3>
+        <p>Start from absolute zero — no prior technical background needed.</p>
+      </div>
+      <div class="glass why-card" data-reveal data-reveal-delay="2">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="5" width="16" height="11" rx="2"/><path d="M2 20h20"/></svg></div>
+        <h3>No Laptop Required</h3>
+        <p>The entire workflow, from build to delivery, runs on your phone.</p>
+      </div>
+      <div class="glass why-card" data-reveal>
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></div>
+        <h3>No Paid Software</h3>
+        <p>Every tool in the course is free to use, forever.</p>
+      </div>
+      <div class="glass why-card" data-reveal data-reveal-delay="1">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+        <h3>No Experience</h3>
+        <p>Built for complete beginners — we start from square one.</p>
+      </div>
+      <div class="glass why-card" data-reveal data-reveal-delay="2">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
+        <h3>Only Mobile + AI</h3>
+        <p>Just your phone and modern AI tools — that's the entire toolkit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pre-curriculum-offer">
+  <div class="container">
+    <div class="offer-box" data-reveal>
+      <div class="offer-box-badge">SPECIAL LAUNCH DISCOUNT</div>
+      
+      <div class="offer-price-row">
+        <span class="offer-symbol">₹</span>
+        <span class="offer-price-big">887</span>
+        <span class="offer-price-old">₹2,999</span>
+      </div>
+
+      <div class="offer-save-pill">Save ₹2,112 (70% Off Today)</div>
+
+      <div class="offer-list">
+        <div class="offer-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Full 5-Module AI Website Masterclass</span>
+        </div>
+        <div class="offer-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Complete Client Acquisition & Closing System</span>
+        </div>
+        <div class="offer-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>1,000+ Premium AI Prompts</span>
+        </div>
+        <div class="offer-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>250 Ready-to-Use Website Templates</span>
+        </div>
+        <div class="offer-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Private VIP Community Access</span>
+        </div>
+        <div class="offer-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Lifetime Access & All Future Updates</span>
+        </div>
+      </div>
+
+      <a href="https://rzp.io/rzp/codelessai" class="offer-btn magnetic">
+        <span>Get Instant Access Now</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="curriculum" id="curriculum">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">The Curriculum</span>
+      <h2>What You'll Learn</h2>
+      <p>Five modules that take you from your first AI website to a repeatable client business.</p>
+    </div>
+    <div class="module-list">
+
+      <div class="glass module" data-reveal>
+        <div><div class="module-num">01</div><h3 class="module-title">AI Website Development</h3><p class="module-sub">Design and build sites that feel handcrafted, not templated.</p></div>
+        <div class="module-items">
+          <div class="module-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>AI Website Development</div>
+          <div class="module-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Landing Pages</div>
+          <div class="module-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Premium UI Design</div>
+          <div class="module-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Animations</div>
+          <div class="module-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Website Optimization</div>
+        </div>
+      </div>
+
+      <div class="glass module" data-reveal data-reveal-delay="1">
+        <div><div class="module-num">02</div><h3 class="module-title">Ship It Live</h3><p class="module-sub">Take a finished design from your phone to a live, working domain.</p></div>
+        <div class="module-items">
+          <div class="module-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>GitHub Deployment</div>
+          <div class="module-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Free Hosting</div>
+          <div class="module-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Domains</div>
+        </div>
+      </div>
+
+      <div class="glass module" data-reveal data-reveal-delay="2">
+        <div><div class="module-num">03</div><h3 class="module-title">Sell Your Skills</h3><p class="module-sub">The exact system for turning websites into recurring income.</p></div>
+        <div class="module-items">
+          <div class="module-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Website Selling System</div>
+          <div class="module-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Finding Clients</div>
+          <div class="module-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>International Clients</div>
+          <div class="module-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Local Clients</div>
+          <div class="module-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Website Pricing</div>
+          <div class="module-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Sales Psychology</div>
+          <div class="module-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Client Closing</div>
+          <div class="module-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Proposal Creation</div>
+          <div class="module-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Website Delivery</div>
+        </div>
+      </div>
+
+      <div class="glass module" data-reveal>
+        <div><div class="module-num">04</div><h3 class="module-title">AI Mastery</h3><p class="module-sub">Get precise, professional output from every AI tool you use.</p></div>
+        <div class="module-items">
+          <div class="module-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Prompt Engineering</div>
+          <div class="module-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>ChatGPT</div>
+          <div class="module-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Claude</div>
+          <div class="module-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>AI Workflow</div>
+        </div>
+      </div>
+
+      <div class="glass module" data-reveal data-reveal-delay="1">
+        <div><div class="module-num">05</div><h3 class="module-title">Business Mindset</h3><p class="module-sub">Think and operate like a founder, not a freelancer.</p></div>
+        <div class="module-items">
+          <div class="module-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Business Mindset</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="system" id="system">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow" style="color:var(--accent);background:rgba(56,189,248,.1);">The Full System</span>
+      <h2>The Website Selling System</h2>
+      <p>One continuous path from your first lesson to your first payout.</p>
+    </div>
+    <div class="timeline" id="timeline">
+      <div class="timeline-line"></div>
+      <div class="timeline-progress" id="tlProgress"></div>
+      <div class="tl-step"><div class="tl-dot">01</div><div class="tl-body"><h3>Learn</h3><p>Master the AI tools and design principles behind premium websites.</p></div></div>
+      <div class="tl-step"><div class="tl-dot">02</div><div class="tl-body"><h3>Build</h3><p>Turn a blank prompt into a fully designed, animated website.</p></div></div>
+      <div class="tl-step"><div class="tl-dot">03</div><div class="tl-body"><h3>Deploy</h3><p>Push it live with free hosting, GitHub, and a real domain.</p></div></div>
+      <div class="tl-step"><div class="tl-dot">04</div><div class="tl-body"><h3>Find Clients</h3><p>Source local and international clients who need exactly this.</p></div></div>
+      <div class="tl-step"><div class="tl-dot">05</div><div class="tl-body"><h3>Close Deals</h3><p>Present, price, and close with proven sales psychology.</p></div></div>
+      <div class="tl-step"><div class="tl-dot">06</div><div class="tl-body"><h3>Deliver Projects</h3><p>Hand off polished, client-ready work every single time.</p></div></div>
+      <div class="tl-step"><div class="tl-dot">07</div><div class="tl-body"><h3>Earn</h3><p>Get paid, then repeat the system with your next client.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="proof">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Student Results</span>
+      <h2>Real People. Real Progress.</h2>
+      <p>A look at students already learning, building, and closing their first deals.</p>
+    </div>
+  </div>
+  <div class="marquee-wrap proof-wrap" data-reveal>
+    <div class="proof-track" id="proofTrack"></div>
+  </div>
+</section>
+
+<section class="bonuses">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Included Free</span>
+      <h2>Bonuses</h2>
+      <p>Extra resources that keep compounding in value long after you enroll.</p>
+    </div>
+    <div class="bonus-grid">
+      <div class="glass bonus-card" data-reveal><span class="bonus-tag">Ready-to-use</span><h3>1,000+ AI Website Prompts</h3><p>The exact prompts used to generate premium designs.</p></div>
+      <div class="glass bonus-card" data-reveal data-reveal-delay="1"><span class="bonus-tag">Plug & Play</span><h3>250 Premium Website Templates</h3><p>Starter templates to customize and ship websites faster.</p></div>
+      <div class="glass bonus-card" data-reveal data-reveal-delay="2"><span class="bonus-tag">Copy & Send</span><h3>How to Get Your First Client</h3><p>Proven actionable blueprint for outreach, pitching, and closing clients.</p></div>
+      <div class="glass bonus-card" data-reveal><span class="bonus-tag">Forever</span><h3>Lifetime Update</h3><p>Every future lesson, toolkit update, and resource at no extra cost.</p></div>
+      <div class="glass bonus-card centered-item" data-reveal data-reveal-delay="1"><span class="bonus-tag">Members Only</span><h3>Private Community</h3><p>A dedicated space to get expert feedback, tech support, and network.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Questions</span>
+      <h2>Frequently Asked Questions</h2>
+      <p>Still deciding? Here's what most people ask before enrolling.</p>
+    </div>
+    <div class="faq-list" data-reveal>
+      <div class="glass faq-item">
+        <button class="faq-q" aria-expanded="false">Do I need any coding experience?<span class="faq-plus"></span></button>
+        <div class="faq-a-wrap"><div class="faq-a-inner"><p class="faq-a">No. CodeLess AI is built for complete beginners. Every website is built using AI tools — you never write code.</p></div></div>
+      </div>
+      <div class="glass faq-item">
+        <button class="faq-q" aria-expanded="false">Can I really do this from my phone?<span class="faq-plus"></span></button>
+        <div class="faq-a-wrap"><div class="faq-a-inner"><p class="faq-a">Yes. The entire workflow — building, deploying, and delivering client websites — is designed to run entirely on mobile.</p></div></div>
+      </div>
+      <div class="glass faq-item">
+        <button class="faq-q" aria-expanded="false">Are the tools free to use?<span class="faq-plus"></span></button>
+        <div class="faq-a-wrap"><div class="faq-a-inner"><p class="faq-a">Yes. Every tool taught inside the course, including hosting and deployment, is completely free.</p></div></div>
+      </div>
+      <div class="glass faq-item">
+        <button class="faq-q" aria-expanded="false">How do I actually find clients?<span class="faq-plus"></span></button>
+        <div class="faq-a-wrap"><div class="faq-a-inner"><p class="faq-a">The Website Selling System module walks through finding both local and international clients, pricing your work, and closing deals with confidence.</p></div></div>
+      </div>
+      <div class="glass faq-item">
+        <button class="faq-q" aria-expanded="false">Is this a one-time payment?<span class="faq-plus"></span></button>
+        <div class="faq-a-wrap"><div class="faq-a-inner"><p class="faq-a">Yes. One enrollment gives you lifetime access, including all future updates and resources.</p></div></div>
+      </div>
+      <div class="glass faq-item">
+        <button class="faq-q" aria-expanded="false">What if I get stuck?<span class="faq-plus"></span></button>
+        <div class="faq-a-wrap"><div class="faq-a-inner"><p class="faq-a">You get access to a private community and direct support so you're never stuck for long.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta" id="cta">
+  <div class="glow-a"></div>
+  <div class="glow-b"></div>
+  <div class="container">
+    <span class="eyebrow" style="color:var(--accent);background:rgba(56,189,248,.1);" data-reveal>Enrollment Open</span>
+    <h2 data-reveal data-reveal-delay="1">Start Building Today.<span class="accent-line">Your First Client Could Be Closer Than You Think.</span></h2>
+    <p data-reveal data-reveal-delay="2">Join CodeLess AI and get everything you need to build, deploy, and sell premium AI websites — starting today.</p>
+
+    <div class="final-pricing-card" data-reveal data-reveal-delay="2">
+      <span class="old">₹2,999</span>
+      <span class="new">₹887</span>
+      <span class="badge">Limited Offer</span>
+    </div>
+
+    <br>
+    <a href="https://rzp.io/rzp/codelessai" class="btn btn-primary magnetic" data-reveal data-reveal-delay="3">
+      Enroll Now for ₹887
+      <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<div class="sales-popup" id="salesPopup">
+  <div class="sales-popup-avatar" id="salesAvatar">A</div>
+  <div class="sales-popup-content">
+    <span class="sales-popup-title" id="salesName">Aarav Patel</span>
+    <span class="sales-popup-desc">purchased CodeLess AI Masterclass</span>
+    <span class="sales-popup-time" id="salesTime">2 mins ago</span>
+  </div>
+</div>
+
+<a class="wa-float" aria-label="Chat with CodeLess AI on WhatsApp"
+   href="https://wa.me/919368813688"
+   target="_blank" rel="noopener">
+  <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.001 3C9.096 3 3.5 8.596 3.5 15.5c0 2.42.68 4.68 1.86 6.6L3 29l7.09-2.32a12.44 12.44 0 0 0 5.9 1.5h.01c6.9 0 12.5-5.6 12.5-12.5S22.9 3 16.001 3zm0 22.7h-.01a10.2 10.2 0 0 1-5.2-1.43l-.37-.22-4.2 1.37 1.4-4.1-.24-.42a10.19 10.19 0 0 1-1.56-5.4c0-5.65 4.6-10.25 10.26-10.25S26.25 9.85 26.25 15.5 21.65 25.7 16 25.7zm5.63-7.68c-.31-.15-1.82-.9-2.1-1s-.49-.15-.7.15-.8 1-.98 1.2-.36.23-.67.08a8.36 8.36 0 0 1-2.46-1.52 9.2 9.2 0 0 1-1.7-2.11c-.18-.31 0-.47.14-.62.14-.14.31-.36.47-.54.15-.18.2-.31.31-.51a.57.57 0 0 0-.02-.55c-.08-.15-.7-1.68-.96-2.3-.25-.6-.5-.52-.7-.53h-.6a1.16 1.16 0 0 0-.84.39 3.53 3.53 0 0 0-1.1 2.63c0 1.55 1.13 3.05 1.29 3.26.15.2 2.22 3.39 5.38 4.75.75.32 1.34.52 1.8.66.76.24 1.44.2 1.99.13.6-.09 1.82-.75 2.08-1.47.26-.72.26-1.34.18-1.47-.08-.13-.28-.2-.59-.35z"/></svg>
+</a>
+
+<footer class="footer" id="siteFooter">
+  <div class="container footer-inner">
+    <div class="footer-logo"><img src="https://i.ibb.co/LXF1GLPQ/Picsart-26-06-30-00-57-46-824.jpg" alt="CodeLess AI Logo">CodeLess AI</div>
+    <div class="footer-links">
+      <a href="#privacy-policy" data-policy-open="privacy">Privacy Policy</a>
+      <a href="#terms" data-policy-open="terms">Terms</a>
+      <a href="#refund-policy" data-policy-open="refund">Refund Policy</a>
+    </div>
+    <div class="footer-copy">© <span id="year"></span> CodeLess AI. All rights reserved.</div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     DEDICATED FULL-SCREEN POLICY PAGES
+============================================================ -->
+<div class="policy-page-overlay" id="policyOverlay" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="policy-topbar">
+    <div class="policy-topbar-inner">
+      <div class="logo">
+        <img src="https://i.ibb.co/LXF1GLPQ/Picsart-26-06-30-00-57-46-824.jpg" alt="CodeLess AI Logo">
+        <span>CodeLess AI</span>
+      </div>
+      <button type="button" class="policy-back-btn" id="closePolicyBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        <span>Back to Website</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="policy-tabs">
+    <button type="button" class="policy-tab-btn" data-policy-tab="refund">Refund Policy</button>
+    <button type="button" class="policy-tab-btn" data-policy-tab="privacy">Privacy Policy</button>
+    <button type="button" class="policy-tab-btn" data-policy-tab="terms">Terms & Conditions</button>
+  </div>
+
+  <div class="policy-container">
+
+    <!-- 1. REFUND POLICY -->
+    <article class="policy-view" id="policy-refund">
+      <span class="policy-badge">Official Policy</span>
+      <h1>Refund & Cancellation Policy</h1>
+      <p class="policy-updated">Effective & Last Updated: Strictly Enforced for All Enrollments</p>
+
+      <div class="strict-refund-banner">
+        <div class="strict-refund-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span>Strict 100% No-Refund Policy — All Sales Are Final</span>
+        </div>
+        <p>
+          Please read this carefully before enrolling. Because CodeLess AI provides instant, lifetime access to digital course materials and proprietary resources, <strong>refunds, cancellations, or exchanges are strictly NOT available under any circumstances once a purchase is completed.</strong>
+        </p>
+      </div>
+
+      <div class="policy-section">
+        <h3>1. Nature of Digital Products & Instant Access</h3>
+        <p>
+          When you enroll, you receive immediate and irrevocable access to high-value digital intellectual property, including training materials, exclusive assets, and downloadable resources.
+        </p>
+        <p>
+          Unlike physical goods, digital courses and assets cannot be "returned" once accessed, viewed, or copied. Therefore, every transaction is final and non-refundable.
+        </p>
+      </div>
+
+      <div class="policy-section">
+        <h3>2. Non-Refundable Situations</h3>
+        <p>
+          By completing your purchase, you explicitly acknowledge and agree that no refund requests will be entertained for reasons including, but not limited to:
+        </p>
+        <ul class="policy-list">
+          <li>Changing your mind after completing the payment or after accessing the course dashboard.</li>
+          <li>Accidental purchase or claiming someone else used your payment method.</li>
+          <li>Not having enough personal time to complete the lessons.</li>
+          <li>Inability to achieve specific financial results.</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h3>3. Duplicate Payment or Access Support</h3>
+        <p>
+          If your money is debited twice for the exact same order due to a technical error at the payment gateway, please share your payment screenshot with us on WhatsApp, and the duplicate charge will be verified and resolved promptly. Similarly, if you face any delay or technical issue in receiving your course access link after payment, our support team on WhatsApp will manually grant your access right away.
+        </p>
+      </div>
+
+      <div class="policy-section">
+        <h3>4. Have Any Questions or Doubts? Talk to Us on WhatsApp First!</h3>
+        <p>
+          We want you to be 100% confident and clear before joining CodeLess AI. If you have any questions, doubts, or confusion regarding the course curriculum or how you will receive access after payment, please message us directly on WhatsApp. Our team is happy to guide you and clear all your doubts personally.
+        </p>
+      </div>
+
+      <div class="policy-wa-card">
+        <div>
+          <h4>Still Have Questions or Need Help?</h4>
+          <p>Koi bhi question ya doubt ho to purchase karne se pehle ya baad me aap seedha WhatsApp par humse baat kar sakte hain.</p>
+        </div>
+        <a href="https://wa.me/919368813688?text=Hi%20CodeLess%20AI%2C%20I%20have%20a%20question%20regarding%20the%20Masterclass." target="_blank" rel="noopener" class="policy-wa-btn">
+          <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.001 3C9.096 3 3.5 8.596 3.5 15.5c0 2.42.68 4.68 1.86 6.6L3 29l7.09-2.32a12.44 12.44 0 0 0 5.9 1.5h.01c6.9 0 12.5-5.6 12.5-12.5S22.9 3 16.001 3zm0 22.7h-.01a10.2 10.2 0 0 1-5.2-1.43l-.37-.22-4.2 1.37 1.4-4.1-.24-.42a10.19 10.19 0 0 1-1.56-5.4c0-5.65 4.6-10.25 10.26-10.25S26.25 9.85 26.25 15.5 21.65 25.7 16 25.7zm5.63-7.68c-.31-.15-1.82-.9-2.1-1s-.49-.15-.7.15-.8 1-.98 1.2-.36.23-.67.08a8.36 8.36 0 0 1-2.46-1.52 9.2 9.2 0 0 1-1.7-2.11c-.18-.31 0-.47.14-.62.14-.14.31-.36.47-.54.15-.18.2-.31.31-.51a.57.57 0 0 0-.02-.55c-.08-.15-.7-1.68-.96-2.3-.25-.6-.5-.52-.7-.53h-.6a1.16 1.16 0 0 0-.84.39 3.53 3.53 0 0 0-1.1 2.63c0 1.55 1.13 3.05 1.29 3.26.15.2 2.22 3.39 5.38 4.75.75.32 1.34.52 1.8.66.76.24 1.44.2 1.99.13.6-.09 1.82-.75 2.08-1.47.26-.72.26-1.34.18-1.47-.08-.13-.28-.2-.59-.35z"/></svg>
+          <span>Chat on WhatsApp</span>
+        </a>
+      </div>
+    </article>
+
+    <!-- 2. PRIVACY POLICY -->
+    <article class="policy-view" id="policy-privacy">
+      <span class="policy-badge">Data Protection</span>
+      <h1>Privacy Policy</h1>
+      <p class="policy-updated">Effective & Last Updated: Standard Privacy Protection for All Users</p>
+
+      <div class="policy-section">
+        <h3>1. Overview</h3>
+        <p>
+          At <strong>CodeLess AI</strong>, we respect your privacy and are committed to protecting the personal information you share with us. This Privacy Policy explains how we collect, use, and safeguard your data when you visit our website, enroll in our courses, or interact with our support team.
+        </p>
+      </div>
+
+      <div class="policy-section">
+        <h3>2. Information We Collect</h3>
+        <p>When you register or purchase, we collect only the essential details required to deliver your course access and support:</p>
+        <ul class="policy-list">
+          <li><strong>Personal Identification Details:</strong> Your Full Name, Email Address, and WhatsApp/Mobile Phone Number provided during checkout.</li>
+          <li><strong>Transaction Information:</strong> Order ID, payment confirmation status, and timestamp required to verify your enrollment.</li>
+          <li><strong>Device & Usage Data:</strong> Basic non-sensitive browser and device analytics used to optimize website speed and mobile performance.</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h3>3. 100% Secure Payment Processing</h3>
+        <p>
+          All payments on CodeLess AI are processed through industry-standard, PCI-DSS compliant third-party payment gateways (such as <strong>Razorpay</strong>). We <strong>never</strong> store, view, or have access to your credit card numbers, debit card details, net banking credentials, or UPI PINs on our servers.
+        </p>
+      </div>
+
+      <div class="policy-section">
+        <h3>4. How We Use Your Information</h3>
+        <ul class="policy-list">
+          <li>To deliver instant access to the digital course materials and resources.</li>
+          <li>To add you to the Private Community and send important course updates or new bonus additions.</li>
+          <li>To provide fast technical assistance and query resolution via WhatsApp and email.</li>
+          <li>To prevent unauthorized account sharing, fraud, or piracy of our digital assets.</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h3>5. Strict No-Spam & Data Sharing Policy</h3>
+        <p>
+          We do <strong>not</strong> sell, rent, trade, or distribute your personal phone number or email address to any third-party telemarketers or external agencies. Your details remain strictly confidential with CodeLess AI.
+        </p>
+      </div>
+
+      <div class="policy-wa-card">
+        <div>
+          <h4>Privacy or Account Questions?</h4>
+          <p>Agar aapko apne data, course access, ya account ke baare me kuch bhi puchna ho to WhatsApp par humse sampark karein.</p>
+        </div>
+        <a href="https://wa.me/919368813688?text=Hi%20CodeLess%20AI%2C%20I%20have%20a%20query%20regarding%20Privacy%20Policy." target="_blank" rel="noopener" class="policy-wa-btn">
+          <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.001 3C9.096 3 3.5 8.596 3.5 15.5c0 2.42.68 4.68 1.86 6.6L3 29l7.09-2.32a12.44 12.44 0 0 0 5.9 1.5h.01c6.9 0 12.5-5.6 12.5-12.5S22.9 3 16.001 3zm0 22.7h-.01a10.2 10.2 0 0 1-5.2-1.43l-.37-.22-4.2 1.37 1.4-4.1-.24-.42a10.19 10.19 0 0 1-1.56-5.4c0-5.65 4.6-10.25 10.26-10.25S26.25 9.85 26.25 15.5 21.65 25.7 16 25.7zm5.63-7.68c-.31-.15-1.82-.9-2.1-1s-.49-.15-.7.15-.8 1-.98 1.2-.36.23-.67.08a8.36 8.36 0 0 1-2.46-1.52 9.2 9.2 0 0 1-1.7-2.11c-.18-.31 0-.47.14-.62.14-.14.31-.36.47-.54.15-.18.2-.31.31-.51a.57.57 0 0 0-.02-.55c-.08-.15-.7-1.68-.96-2.3-.25-.6-.5-.52-.7-.53h-.6a1.16 1.16 0 0 0-.84.39 3.53 3.53 0 0 0-1.1 2.63c0 1.55 1.13 3.05 1.29 3.26.15.2 2.22 3.39 5.38 4.75.75.32 1.34.52 1.8.66.76.24 1.44.2 1.99.13.6-.09 1.82-.75 2.08-1.47.26-.72.26-1.34.18-1.47-.08-.13-.28-.2-.59-.35z"/></svg>
+          <span>Chat on WhatsApp</span>
+        </a>
+      </div>
+    </article>
+
+    <!-- 3. TERMS & CONDITIONS -->
+    <article class="policy-view" id="policy-terms">
+      <span class="policy-badge">User Agreement</span>
+      <h1>Terms & Conditions</h1>
+      <p class="policy-updated">Effective & Last Updated: Applicable to All CodeLess AI Students & Visitors</p>
+
+      <div class="policy-section">
+        <h3>1. Acceptance of Terms</h3>
+        <p>
+          By accessing this website and enrolling in our courses, you agree to comply with and be bound by these Terms & Conditions, our Privacy Policy, and our strict No-Refund Policy.
+        </p>
+      </div>
+
+      <div class="policy-section">
+        <h3>2. License & Intellectual Property Rights</h3>
+        <ul class="policy-list">
+          <li><strong>What You Are Allowed To Do:</strong> You are granted a personal, non-transferable lifetime license to watch the training materials and use the provided resources to build and sell websites for yourself and your paying clients.</li>
+          <li><strong>What Is Strictly Prohibited:</strong> You may <strong>not</strong> resell, pirate, redistribute, upload to public drives/Telegram channels, or share the course or raw resources as your own digital product. Any violation will result in immediate termination of your access without notice or refund, alongside legal action under applicable copyright laws.</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h3>3. Earnings & Results Disclaimer</h3>
+        <p>
+          CodeLess AI teaches a practical, proven skill set — building websites and acquiring clients. However, your actual income and client results depend entirely on your own effort, consistency, outreach, and execution. We do not guarantee any fixed income or guaranteed results without action.
+        </p>
+      </div>
+
+      <div class="policy-section">
+        <h3>4. Payment & Pricing Policy</h3>
+        <p>
+          The enrollment fee is a one-time payment that includes lifetime access to the curriculum, bonuses, and future updates. All purchases are final and governed by our strict No-Refund Policy.
+        </p>
+      </div>
+
+      <div class="policy-section">
+        <h3>5. Community Guidelines</h3>
+        <p>
+          Members of the Private Community are expected to maintain a respectful, helpful, and professional environment. Spamming, self-promotion of unrelated links, or abusive behavior towards fellow students or mentors will lead to removal from the community group.
+        </p>
+      </div>
+
+      <div class="policy-wa-card">
+        <div>
+          <h4>Need Clarification on Any Term?</h4>
+          <p>Kisi bhi term ya course detail ke baare me janne ke liye aap humse WhatsApp par seedha baat kar sakte hain.</p>
+        </div>
+        <a href="https://wa.me/919368813688?text=Hi%20CodeLess%20AI%2C%20I%20have%20a%20question%20about%20the%20course." target="_blank" rel="noopener" class="policy-wa-btn">
+          <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.001 3C9.096 3 3.5 8.596 3.5 15.5c0 2.42.68 4.68 1.86 6.6L3 29l7.09-2.32a12.44 12.44 0 0 0 5.9 1.5h.01c6.9 0 12.5-5.6 12.5-12.5S22.9 3 16.001 3zm0 22.7h-.01a10.2 10.2 0 0 1-5.2-1.43l-.37-.22-4.2 1.37 1.4-4.1-.24-.42a10.19 10.19 0 0 1-1.56-5.4c0-5.65 4.6-10.25 10.26-10.25S26.25 9.85 26.25 15.5 21.65 25.7 16 25.7zm5.63-7.68c-.31-.15-1.82-.9-2.1-1s-.49-.15-.7.15-.8 1-.98 1.2-.36.23-.67.08a8.36 8.36 0 0 1-2.46-1.52 9.2 9.2 0 0 1-1.7-2.11c-.18-.31 0-.47.14-.62.14-.14.31-.36.47-.54.15-.18.2-.31.31-.51a.57.57 0 0 0-.02-.55c-.08-.15-.7-1.68-.96-2.3-.25-.6-.5-.52-.7-.53h-.6a1.16 1.16 0 0 0-.84.39 3.53 3.53 0 0 0-1.1 2.63c0 1.55 1.13 3.05 1.29 3.26.15.2 2.22 3.39 5.38 4.75.75.32 1.34.52 1.8.66.76.24 1.44.2 1.99.13.6-.09 1.82-.75 2.08-1.47.26-.72.26-1.34.18-1.47-.08-.13-.28-.2-.59-.35z"/></svg>
+          <span>Chat on WhatsApp</span>
+        </a>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---------- NAV SCROLL STATE ---------- */
+  var nav = document.getElementById('nav');
+  function onScrollNav(){
+    if(window.scrollY > 20) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+  }
+  document.addEventListener('scroll', onScrollNav, {passive:true});
+  onScrollNav();
+
+  /* ---------- SCROLL REVEAL ---------- */
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    },{threshold:0.15, rootMargin:'0px 0px -60px 0px'});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in-view'); });
+  }
+
+  /* ---------- TIMELINE PROGRESS + STEP REVEAL ---------- */
+  var timeline = document.getElementById('timeline');
+  var tlProgress = document.getElementById('tlProgress');
+  var tlSteps = document.querySelectorAll('.tl-step');
+  if(timeline && 'IntersectionObserver' in window){
+    var stepObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting) entry.target.classList.add('in-view');
+      });
+    },{threshold:0.4});
+    tlSteps.forEach(function(s){ stepObs.observe(s); });
+
+    function updateProgress(){
+      var rect = timeline.getBoundingClientRect();
+      var vh = window.innerHeight;
+      var total = rect.height;
+      var visible = Math.min(Math.max(vh * 0.75 - rect.top, 0), total);
+      var pct = total > 0 ? (visible / total) * 100 : 0;
+      tlProgress.style.height = pct + '%';
+    }
+    document.addEventListener('scroll', function(){
+      window.requestAnimationFrame(updateProgress);
+    }, {passive:true});
+    updateProgress();
+  }
+
+  /* ---------- HERO MOUSE PARALLAX ---------- */
+  var heroEl = document.getElementById('hero');
+  var parallaxTarget = document.getElementById('heroParallax');
+  var targetX = 0, targetY = 0, curX = 0, curY = 0;
+  if(heroEl && parallaxTarget && !reduceMotion && window.matchMedia('(min-width:1024px)').matches){
+    heroEl.addEventListener('mousemove', function(e){
+      var rect = heroEl.getBoundingClientRect();
+      var relX = (e.clientX - rect.left) / rect.width - 0.5;
+      var relY = (e.clientY - rect.top) / rect.height - 0.5;
+      targetX = relX * 18;
+      targetY = relY * 14;
+    });
+    (function loop(){
+      curX += (targetX - curX) * 0.06;
+      curY += (targetY - curY) * 0.06;
+      parallaxTarget.style.setProperty('--px', curX.toFixed(2) + 'deg');
+      parallaxTarget.style.transform = 'rotateY(' + curX.toFixed(2) + 'deg) rotateX(' + (-curY).toFixed(2) + 'deg)';
+      window.requestAnimationFrame(loop);
+    })();
+  }
+
+  /* ---------- PARTICLES ---------- */
+  var particleHost = document.getElementById('particles');
+  if(particleHost && !reduceMotion){
+    var count = window.innerWidth < 640 ? 10 : 22;
+    for(var i=0;i<count;i++){
+      var p = document.createElement('span');
+      p.className = 'particle';
+      var size = 2 + Math.random()*3;
+      p.style.width = size+'px';
+      p.style.height = size+'px';
+      p.style.left = (Math.random()*100)+'%';
+      p.style.top = (40 + Math.random()*55)+'%';
+      p.style.animationDuration = (8 + Math.random()*10)+'s';
+      p.style.animationDelay = (Math.random()*8)+'s';
+      particleHost.appendChild(p);
+    }
+  }
+
+  /* ---------- MAGNETIC BUTTONS + RIPPLE ---------- */
+  var magButtons = document.querySelectorAll('.magnetic');
+  magButtons.forEach(function(btn){
+    if(!reduceMotion && window.matchMedia('(min-width:768px)').matches){
+      btn.addEventListener('mousemove', function(e){
+        var rect = btn.getBoundingClientRect();
+        var x = e.clientX - rect.left - rect.width/2;
+        var y = e.clientY - rect.top - rect.height/2;
+        btn.style.transform = 'translate(' + (x*0.18).toFixed(2) + 'px,' + (y*0.35).toFixed(2) + 'px)';
+      });
+      btn.addEventListener('mouseleave', function(){
+        btn.style.transform = 'translate(0,0)';
+      });
+    }
+    btn.addEventListener('click', function(e){
+      var rect = btn.getBoundingClientRect();
+      var ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      var size = Math.max(rect.width, rect.height);
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = (e.clientX - rect.left - size/2) + 'px';
+      ripple.style.top = (e.clientY - rect.top - size/2) + 'px';
+      btn.appendChild(ripple);
+      setTimeout(function(){ ripple.remove(); }, 700);
+    });
+  });
+
+  /* ---------- FAQ ACCORDION ---------- */
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var q = item.querySelector('.faq-q');
+    q.addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(openItem){
+        if(openItem !== item){
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-q').setAttribute('aria-expanded','false');
+        }
+      });
+      item.classList.toggle('open', !isOpen);
+      q.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
+
+  /* ---------- SMART VIDEO SLIDER LOGIC ---------- */
+  var showcaseVideos = [
+    "https://videotourl.com/videos/1789316817571-64972ff7-28cd-4c92-b934-19b82bc7d1db.mp4",
+    "https://www.image2url.com/r2/default/videos/1789318721399-54e29caf-f6bc-498e-a28f-79fd13abf0d1.mp4",
+    "https://www.image2url.com/r2/default/videos/1789318847246-db058728-5c16-47c8-ac23-6fd4223fb0ad.mp4",
+    "https://www.image2url.com/r2/default/videos/1789318923439-f80264f7-d917-4056-8106-18bef65214a8.mp4",
+    "https://www.image2url.com/r2/default/videos/1789320880661-f58d583d-bf3d-4c09-ba30-ac7b5f05285a.mp4",
+    "https://www.image2url.com/r2/default/videos/1789320958903-8a00293d-445a-4474-80f9-2f310cf42587.mp4"
+  ];
+  
+  var showcaseWrap = document.getElementById('showcaseWrap');
+  var showcaseTrack = document.getElementById('showcaseTrack');
+  var isShowcaseVisible = true; // Optimization flag
+  
+  function buildShowcase(){
+    var html = '';
+    var list = showcaseVideos.concat(showcaseVideos, showcaseVideos, showcaseVideos);
+    list.forEach(function(src){
+      html += '<div class="showcase-card">' +
+        '<div class="showcase-img-wrap"><video src="'+src+'" muted loop playsinline width="300" height="195" preload="none"></video><div class="showcase-reflection"></div></div>' +
+        '<div class="showcase-label"><span class="chip-dot"></span>AI-Built Website</div>' +
+      '</div>';
+    });
+    showcaseTrack.innerHTML = html;
+
+    // Optimized visibility observer for playing video and scroll trigger
+    var observerOptions = {
+        root: showcaseWrap,
+        rootMargin: '0px -10% 0px -10%',
+        threshold: 0.5
+    };
+    
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            var video = entry.target.querySelector('video');
+            if(entry.isIntersecting) {
+                if(video) {
+                    var playPromise = video.play();
+                    if(playPromise !== undefined) playPromise.catch(function(e) {});
+                }
+            } else {
+                if(video) video.pause();
+            }
+        });
+    }, observerOptions);
+
+    var allCards = showcaseTrack.querySelectorAll('.showcase-card');
+    allCards.forEach(function(card){ observer.observe(card); });
+
+    // Global Section Observer to Pause AutoScroll lag completely when offscreen
+    var sectionObserver = new IntersectionObserver(function(entries){
+       isShowcaseVisible = entries[0].isIntersecting;
+    }, {rootMargin: "300px"});
+    sectionObserver.observe(showcaseWrap);
+  }
+  buildShowcase();
+
+  var isTouching = false;
+  showcaseTrack.addEventListener('touchstart', function(){ isTouching = true; }, {passive: true});
+  showcaseTrack.addEventListener('touchend', function(){ setTimeout(function(){ isTouching = false; }, 1200); }, {passive: true});
+  showcaseTrack.addEventListener('mouseenter', function(){ isTouching = true; });
+  showcaseTrack.addEventListener('mouseleave', function(){ isTouching = false; });
+
+  function autoScrollTrack() {
+    // Scroll lag optimization - only calculates scroll when the section is visible on screen
+    if (!isTouching && !reduceMotion && isShowcaseVisible) {
+      showcaseTrack.scrollLeft += 1;
+      var maxScroll = showcaseTrack.scrollWidth / 2;
+      if (showcaseTrack.scrollLeft >= maxScroll) {
+        showcaseTrack.scrollLeft = 0;
+      }
+    }
+    requestAnimationFrame(autoScrollTrack);
+  }
+  requestAnimationFrame(autoScrollTrack);
+
+  /* ---------- BOTTOM PROOF MARQUEE ---------- */
+  var proofImages = [
+    "https://i.ibb.co/Q3PgvHtP/Picsart-26-07-06-22-04-01-782.jpg",
+    "https://i.ibb.co/d4QSZtGF/Picsart-26-07-06-22-22-43-563.jpg",
+    "https://i.ibb.co/6J7Gj1zq/Picsart-26-07-06-22-26-17-464.jpg",
+    "https://i.ibb.co/vbzggZM/Picsart-26-07-06-22-07-57-466.jpg",
+    "https://i.ibb.co/wNmjsPFw/Picsart-26-07-06-22-12-50-658.jpg",
+    "https://i.ibb.co/zWJYP38J/Picsart-26-07-06-22-33-26-642.jpg"
+  ];
+  var proofTrack = document.getElementById('proofTrack');
+  function buildProof(){
+    var html = '';
+    var list = proofImages.concat(proofImages);
+    list.forEach(function(src){
+      html += '<div class="proof-card"><img src="'+src+'" alt="Result" loading="lazy" width="230" height="290"></div>';
+    });
+    proofTrack.innerHTML = html;
+  }
+  buildProof();
+
+  /* ---------- PERSISTENT COUNTDOWN TIMER (2H 23M) ---------- */
+  var TIMER_DURATION = (2 * 3600 + 23 * 60) * 1000;
+  var timerEl = document.getElementById('heroTimer');
+
+  function getEndTime(){
+    var savedEndTime = localStorage.getItem('codeless_timer_end');
+    var now = new Date().getTime();
+    
+    if(!savedEndTime || parseInt(savedEndTime, 10) <= now){
+      var newEndTime = now + TIMER_DURATION;
+      localStorage.setItem('codeless_timer_end', newEndTime);
+      return newEndTime;
+    }
+    return parseInt(savedEndTime, 10);
+  }
+
+  var endTime = getEndTime();
+
+  function updateTimer(){
+    var now = new Date().getTime();
+    var distance = endTime - now;
+
+    if (distance < 0) {
+      endTime = now + TIMER_DURATION;
+      localStorage.setItem('codeless_timer_end', endTime);
+      distance = TIMER_DURATION;
+    }
+
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    var hStr = hours < 10 ? "0" + hours : hours;
+    var mStr = minutes < 10 ? "0" + minutes : minutes;
+    var sStr = seconds < 10 ? "0" + seconds : seconds;
+
+    if(timerEl){
+      timerEl.textContent = hStr + "h " + mStr + "m " + sStr + "s";
+    }
+  }
+
+  updateTimer();
+  setInterval(updateTimer, 1000);
+
+  /* ---------- CONTINUOUS SALES POPUP LOOP + FOOTER/POLICY OVERLAP GUARD ---------- */
+  // 24 Completely new names as requested
+  var salesData = [
+    { name: "Rahul Sharma", city: "Mumbai", time: "Just now" },
+    { name: "Neha Gupta", city: "Delhi", time: "2 mins ago" },
+    { name: "Amit Patel", city: "Ahmedabad", time: "3 mins ago" },
+    { name: "Sneha Reddy", city: "Hyderabad", time: "1 min ago" },
+    { name: "Vikram Singh", city: "Pune", time: "5 mins ago" },
+    { name: "Pooja Desai", city: "Surat", time: "Just now" },
+    { name: "Rohan Das", city: "Kolkata", time: "4 mins ago" },
+    { name: "Anjali Menon", city: "Kochi", time: "2 mins ago" },
+    { name: "Karan Tiwari", city: "Lucknow", time: "6 mins ago" },
+    { name: "Priya Nair", city: "Bengaluru", time: "1 min ago" },
+    { name: "Aditya Verma", city: "Jaipur", time: "3 mins ago" },
+    { name: "Simran Kaur", city: "Chandigarh", time: "7 mins ago" },
+    { name: "Rajesh Kumar", city: "Patna", time: "2 mins ago" },
+    { name: "Divya Joshi", city: "Dehradun", time: "Just now" },
+    { name: "Suresh Pillai", city: "Thiruvananthapuram", time: "4 mins ago" },
+    { name: "Meera Iyer", city: "Chennai", time: "5 mins ago" },
+    { name: "Manish Agarwal", city: "Agra", time: "3 mins ago" },
+    { name: "Kavita Rao", city: "Mysuru", time: "1 min ago" },
+    { name: "Arjun Bhatt", city: "Noida", time: "6 mins ago" },
+    { name: "Ritu Yadav", city: "Kanpur", time: "2 mins ago" },
+    { name: "Yash Jain", city: "Indore", time: "Just now" },
+    { name: "Tanvi Chawla", city: "Ludhiana", time: "5 mins ago" },
+    { name: "Kabir Sinha", city: "Ranchi", time: "3 mins ago" },
+    { name: "Isha Kapoor", city: "Bhopal", time: "4 mins ago" }
+  ];
+
+  var popupEl = document.getElementById('salesPopup');
+  var nameEl = document.getElementById('salesName');
+  var avatarEl = document.getElementById('salesAvatar');
+  var timeEl = document.getElementById('salesTime');
+  var siteFooter = document.getElementById('siteFooter');
+  var popupIndex = 0;
+  var isPaused = false;
+  var isFooterVisible = false;
+  var isPolicyOpen = false;
+
+  function syncPopupVisibility(){
+    if(isFooterVisible || isPolicyOpen){
+      popupEl.classList.add('suppress');
+    } else {
+      popupEl.classList.remove('suppress');
+    }
+  }
+
+  if(siteFooter && 'IntersectionObserver' in window){
+    var footerObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        isFooterVisible = entry.isIntersecting;
+        syncPopupVisibility();
+      });
+    }, { threshold: 0.05 });
+    footerObs.observe(siteFooter);
+  }
+
+  popupEl.addEventListener('mouseenter', function(){ isPaused = true; });
+  popupEl.addEventListener('mouseleave', function(){ isPaused = false; });
+  popupEl.addEventListener('touchstart', function(){ isPaused = true; }, {passive:true});
+  popupEl.addEventListener('touchend', function(){ isPaused = false; }, {passive:true});
+
+  function triggerNextPopup(){
+    if(isPaused || isFooterVisible || isPolicyOpen){
+      setTimeout(triggerNextPopup, 2000);
+      return;
+    }
+
+    var data = salesData[popupIndex];
+    nameEl.textContent = data.name + " (" + data.city + ")";
+    avatarEl.textContent = data.name.charAt(0);
+    timeEl.textContent = data.time;
+
+    popupEl.classList.add('show');
+
+    setTimeout(function(){
+      if(!isPaused){
+        popupEl.classList.remove('show');
+      }
+      popupIndex = (popupIndex + 1) % salesData.length;
+      setTimeout(triggerNextPopup, 3500);
+    }, 4000);
+  }
+
+  setTimeout(triggerNextPopup, 2500);
+
+  /* ---------- DEDICATED POLICY PAGE LOGIC (CLICK TO OPEN ONLY) ---------- */
+  var policyOverlay = document.getElementById('policyOverlay');
+  var closePolicyBtn = document.getElementById('closePolicyBtn');
+  var policyOpenLinks = document.querySelectorAll('[data-policy-open]');
+  var policyTabBtns = document.querySelectorAll('[data-policy-tab]');
+  var policyViews = {
+    refund: document.getElementById('policy-refund'),
+    privacy: document.getElementById('policy-privacy'),
+    terms: document.getElementById('policy-terms')
+  };
+
+  function activatePolicyTab(type){
+    Object.keys(policyViews).forEach(function(key){
+      if(policyViews[key]){
+        policyViews[key].classList.toggle('active', key === type);
+      }
+    });
+    policyTabBtns.forEach(function(btn){
+      btn.classList.toggle('active', btn.getAttribute('data-policy-tab') === type);
+    });
+    policyOverlay.scrollTop = 0;
+  }
+
+  function openPolicyPage(type, pushHash){
+    if(!policyViews[type]) type = 'refund';
+    isPolicyOpen = true;
+    syncPopupVisibility();
+    activatePolicyTab(type);
+    policyOverlay.classList.add('active');
+    policyOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    if(pushHash !== false && window.history && window.history.pushState){
+      window.history.pushState({ policyPage: type }, '', '#' + type + '-policy');
+    }
+  }
+
+  function closePolicyPage(fromHistory){
+    if(!isPolicyOpen) return;
+    isPolicyOpen = false;
+    policyOverlay.classList.remove('active');
+    policyOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    syncPopupVisibility();
+
+    if(!fromHistory && window.location.hash && window.history && window.history.pushState){
+      window.history.pushState('', document.title, window.location.pathname + window.location.search);
+    }
+  }
+
+  policyOpenLinks.forEach(function(link){
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      var type = link.getAttribute('data-policy-open');
+      openPolicyPage(type, true);
+    });
+  });
+
+  policyTabBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var type = btn.getAttribute('data-policy-tab');
+      activatePolicyTab(type);
+      if(window.history && window.history.replaceState){
+        window.history.replaceState({ policyPage: type }, '', '#' + type + '-policy');
+      }
+    });
+  });
+
+  if(closePolicyBtn){
+    closePolicyBtn.addEventListener('click', function(){
+      closePolicyPage(false);
+    });
+  }
+
+  window.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && isPolicyOpen){
+      closePolicyPage(false);
+    }
+  });
+
+  window.addEventListener('popstate', function(e){
+    if(e.state && e.state.policyPage){
+      openPolicyPage(e.state.policyPage, false);
+    } else if(isPolicyOpen){
+      closePolicyPage(true);
+    }
+  });
+
+})();
+</script>
+</body>
+</html>
+
